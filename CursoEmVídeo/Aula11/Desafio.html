@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nacionalidade</title>
+    <style>
+        body{
+            background: gray;
+            font: normal 15pt Arial;
+            text-align: center;
+        }
+        div#resNcl{
+            background: green;
+            width: 150px;
+            height: 150px;
+            margin-left: 600px;
+        }
+        p#txtres{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Nacionalidade</h1>
+    <p>
+        Digite sua nacionalidade: 
+        <input type="text" name="ncl" id="txtncl">
+        <input type="button" value="Salvar" onclick="verifica()">
+    </p>
+    <div id="resNcl" onmouseenter="azul()" onmouseout="verde()" onclick="txtbranco()">
+        <p id="txtres">
+            <!--OUTPUT-->
+        </p>
+    </div>
+    <script>
+        var res = document.querySelector('div#resNcl')
+        var txtres = document.querySelector('p#txtres')
+        var cont = 1
+
+        function verifica(){
+            var ncl = document.querySelector('input#txtncl').value            
+            if(ncl == 'brasileiro' || ncl == 'brasileira'){
+                txtres.innerHTML = `Nacionalidade => ${ncl}`
+            }else{
+                txtres.innerHTML = `Nacionalidade => Estrangeiro`
+            }
+        }
+        
+        function azul(){
+            res.style.background = 'blue' 
+        }
+
+        function verde(){
+            res.style.background = 'green'
+        }
+
+        function txtbranco(){
+            if(cont==1){
+                txtres.style.color = 'red'
+                cont = 2
+            }else{
+                if(cont==2){
+                    txtres.style.color = 'white'
+                    cont = 1
+                }
+            }
+        }
+    </script>
+</body>
+</html>
